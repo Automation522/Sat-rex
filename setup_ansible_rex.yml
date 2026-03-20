@@ -1,0 +1,238 @@
+---
+# =============================================================================
+# Playbook  : setup_ansible_rex.yml
+# Auteur    : Géré via Satellite / Ansible
+# Objet     : Déploiement sécurisé de l'utilisateur ansible-rex pour le
+#             Remote Execution (REX) de Red Hat Satellite 6.18
+# Compat.   : RHEL 7 / 8 / 9 / 10 · AlmaLinux 8 / 9 · Rocky Linux 8 / 9
+#
+# Usage     :
+#   ansible-playbook -i inventory/hosts setup_ansible_rex.yml
+#
+# Variables clés (à surcharger si besoin via -e ou group_vars) :
+#   rex_pubkey          : contenu brut de la clé publique (prioritaire)
+#   satellite_pubkey_path : chemin local de la pubkey sur le Satellite/Capsule
+#   satellite_host      : hôte sur lequel lire la pubkey (défaut : localhost)
+# =============================================================================
+
+- name: "Satellite REX — Configuration sécurisée de l'utilisateur ansible-rex"
+  hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+    rex_user: ansible-rex
+    rex_home: /home/ansible-rex
+    rex_shell: /bin/bash
+    # Chemin de la clé publique sur le Satellite ou la Capsule
+    satellite_pubkey_path: /usr/share/foreman-proxy/.ssh/id_rsa_foreman_proxy.pub
+    # Hôte depuis lequel lire la clé (localhost si le playbook tourne sur le Satellite)
+    satellite_host: localhost
+
+  # ---------------------------------------------------------------------------
+  pre_tasks:
+
+    - name: "PRE | Vérification OS — famille RedHat version >= 7"
+      ansible.builtin.assert:
+        that:
+          - ansible_os_family == "RedHat"
+          - ansible_distribution_major_version | int >= 7
+          - ansible_distribution_major_version | int <= 10
+        fail_msg: >-
+          OS non supporté : {{ ansible_distribution }}
+          {{ ansible_distribution_major_version }}.
+          Ce playbook cible RHEL/AlmaLinux/Rocky 7, 8, 9 ou 10 uniquement.
+        success_msg: >-
+          OS compatible : {{ ansible_distribution }}
+          {{ ansible_distribution_major_version }}
+
+  # ---------------------------------------------------------------------------
+  tasks:
+
+    # =========================================================================
+    # BLOC 1 — Création de l'utilisateur système (verrouillé dès la création)
+    # =========================================================================
+
+    - name: "USER | Créer l'utilisateur système ansible-rex (verrouillé, sans mot de passe)"
+      ansible.builtin.user:
+        name: "{{ rex_user }}"
+        home: "{{ rex_home }}"
+        shell: "{{ rex_shell }}"
+        system: true
+        create_home: true
+        comment: "Satellite Remote Execution User — do not modify manually"
+        password: "!"            # mot de passe invalide → aucun login par mot de passe
+        password_lock: true      # verrouille le compte dès la création
+        state: present
+
+    # =========================================================================
+    # BLOC 3 — Configuration sudo sécurisée
+    # =========================================================================
+
+    - name: "SUDO | Déployer /etc/sudoers.d/ansible-rex avec validation visudo"
+      ansible.builtin.copy:
+        dest: /etc/sudoers.d/ansible-rex
+        content: |
+          # Managed by Satellite — Remote Execution user
+          # Do NOT edit manually
+          ansible-rex ALL=(ALL) NOPASSWD: ALL
+          Defaults:ansible-rex !requiretty
+        owner: root
+        group: root
+        mode: "0440"
+        # validate exécute visudo sur un fichier temporaire avant de l'écrire
+        validate: /usr/sbin/visudo -cf %s
+
+    # =========================================================================
+    # BLOC 4 — Déploiement de la clé SSH publique Satellite/Capsule
+    # =========================================================================
+
+    - name: "SSH | Créer le répertoire ~/.ssh"
+      ansible.builtin.file:
+        path: "{{ rex_home }}/.ssh"
+        state: directory
+        owner: "{{ rex_user }}"
+        group: "{{ rex_user }}"
+        mode: "0700"
+
+    # Option A : La pubkey n'est pas fournie explicitement en variable →
+    #            on la lit depuis le Satellite/Capsule (delegate_to).
+    - name: "SSH | Lire la clé publique sur {{ satellite_host }}"
+      ansible.builtin.slurp:
+        src: "{{ satellite_pubkey_path }}"
+      register: _pubkey_slurp
+      delegate_to: "{{ satellite_host }}"
+      when: rex_pubkey is not defined
+      no_log: true
+
+    - name: "SSH | Normaliser le contenu de la clé publique"
+      ansible.builtin.set_fact:
+        rex_pubkey: "{{ _pubkey_slurp['content'] | b64decode | trim }}"
+      when:
+        - rex_pubkey is not defined
+        - _pubkey_slurp is not skipped
+      no_log: true
+
+    - name: "SSH | Valider le format de la clé publique"
+      ansible.builtin.assert:
+        that:
+          - rex_pubkey is defined
+          - rex_pubkey | length > 0
+          - rex_pubkey is match('^(ssh-rsa|ssh-ed25519|ecdsa-sha2-nistp[0-9]+|sk-ssh-ed25519@openssh.com|sk-ecdsa-sha2-nistp256@openssh.com) ')
+        fail_msg: >-
+          La clé publique fournie n'a pas un format SSH valide.
+          Vérifiez rex_pubkey ou satellite_pubkey_path.
+        success_msg: "Format de la clé publique validé."
+
+    - name: "SSH | Déployer la clé autorisée dans authorized_keys"
+      ansible.posix.authorized_key:
+        user: "{{ rex_user }}"
+        key: "{{ rex_pubkey }}"
+        state: present
+        exclusive: false
+      no_log: true
+
+    - name: "SSH | S'assurer des permissions correctes sur authorized_keys"
+      ansible.builtin.file:
+        path: "{{ rex_home }}/.ssh/authorized_keys"
+        owner: "{{ rex_user }}"
+        group: "{{ rex_user }}"
+        mode: "0600"
+
+    - name: "SSH | S'assurer de la propriété correcte du répertoire .ssh"
+      ansible.builtin.file:
+        path: "{{ rex_home }}/.ssh"
+        owner: "{{ rex_user }}"
+        group: "{{ rex_user }}"
+        mode: "0700"
+        recurse: false
+
+    # =========================================================================
+    # BLOC 5 — Prévention PAM/RHEL 9
+    #          Le compte est déjà verrouillé (password_lock au BLOC 1).
+    #          On s'assure ici que PAM ne bloque pas le SSH par clé.
+    # =========================================================================
+
+    - name: "CHAGE | Paramètres finaux anti-expiration PAM (RHEL 7/8/9/10)"
+      ansible.builtin.command:
+        # -M 99999 : validité max très longue (≈ 274 ans)
+        # -m 0     : pas de délai min entre changements
+        # -W 0     : 0 jour d'avertissement avant expiration
+        #            (-W -1 non supporté sur RHEL 7 et shadow-utils récents)
+        # -I -1    : pas d'inactivité avant verrouillage
+        # -E -1    : pas de date d'expiration
+        cmd: chage -M 99999 -m 0 -W 0 -I -1 -E -1 "{{ rex_user }}"
+      changed_when: true
+
+    # =========================================================================
+    # BLOC 6 — Vérifications finales et rapport
+    # =========================================================================
+
+    - name: "CHECK | Paramètres chage finaux"
+      ansible.builtin.command:
+        cmd: chage -l "{{ rex_user }}"
+      register: final_chage
+      changed_when: false
+
+    - name: "CHECK | Statut du mot de passe (doit afficher LK = Locked)"
+      ansible.builtin.command:
+        cmd: passwd -S "{{ rex_user }}"
+      register: passwd_status
+      changed_when: false
+
+    - name: "CHECK | Vérifier la présence de la clé dans authorized_keys"
+      ansible.builtin.slurp:
+        src: "{{ rex_home }}/.ssh/authorized_keys"
+      register: authkeys_content
+      no_log: true
+
+    - name: "CHECK | Vérifier les permissions du répertoire .ssh"
+      ansible.builtin.stat:
+        path: "{{ rex_home }}/.ssh"
+      register: ssh_dir_stat
+
+    - name: "CHECK | Vérifier les permissions d'authorized_keys"
+      ansible.builtin.stat:
+        path: "{{ rex_home }}/.ssh/authorized_keys"
+      register: authkeys_stat
+
+    - name: "RAPPORT | Afficher le résumé de configuration"
+      ansible.builtin.debug:
+        msg:
+          - "════════════════════════════════════════════════════════"
+          - "  Rapport de configuration ansible-rex"
+          - "  Hôte : {{ inventory_hostname }}"
+          - "  OS   : {{ ansible_distribution }} {{ ansible_distribution_major_version }} (support: 7/8/9/10)"
+          - "════════════════════════════════════════════════════════"
+          - "► Statut passwd (doit contenir 'LK') :"
+          - "    {{ passwd_status.stdout }}"
+          - "► Paramètres chage :"
+          - "{{ final_chage.stdout_lines | to_nice_yaml | indent(4) }}"
+          - "► Permissions .ssh   : {{ ssh_dir_stat.stat.mode }}  (attendu: 0700)"
+          - "► Permissions authkeys: {{ authkeys_stat.stat.mode }} (attendu: 0600)"
+          - "════════════════════════════════════════════════════════"
+
+    - name: "ASSERT | Vérifier que le compte est bien verrouillé (LK ou L)"
+      ansible.builtin.assert:
+        that:
+          - "'LK' in passwd_status.stdout or 'L ' in passwd_status.stdout or 'locked' in (passwd_status.stdout | lower)"
+        fail_msg: >-
+          ATTENTION : le compte {{ rex_user }} ne semble pas verrouillé.
+          Sortie passwd -S : {{ passwd_status.stdout }}
+        success_msg: "Le compte {{ rex_user }} est correctement verrouillé."
+
+    - name: "ASSERT | Vérifier les permissions du répertoire .ssh"
+      ansible.builtin.assert:
+        that:
+          - ssh_dir_stat.stat.mode == '0700'
+        fail_msg: "Permissions incorrectes sur {{ rex_home }}/.ssh : {{ ssh_dir_stat.stat.mode }}"
+        success_msg: "Permissions .ssh correctes : 0700"
+
+    - name: "ASSERT | Vérifier les permissions d'authorized_keys"
+      ansible.builtin.assert:
+        that:
+          - authkeys_stat.stat.mode == '0600'
+        fail_msg: >-
+          Permissions incorrectes sur authorized_keys :
+          {{ authkeys_stat.stat.mode }}
+        success_msg: "Permissions authorized_keys correctes : 0600"

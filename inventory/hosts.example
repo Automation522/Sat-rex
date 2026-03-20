@@ -1,0 +1,36 @@
+# ==============================================================================
+# Exemple d'inventaire pour le playbook setup_ansible_rex.yml
+# Adapter les groupes et variables selon votre environnement Satellite
+# ==============================================================================
+
+[rhel7]
+rhel7-client01.example.com
+rhel7-client02.example.com
+
+[rhel8]
+rhel8-client01.example.com
+almalinux8-srv01.example.com
+rocky8-srv01.example.com
+
+[rhel9]
+rhel9-client01.example.com
+almalinux9-srv01.example.com
+rocky9-srv01.example.com
+
+# Groupe global — cible habituelle du playbook
+[rex_targets:children]
+rhel7
+rhel8
+rhel9
+
+# Variables communes à tous les hôtes cibles
+[rex_targets:vars]
+# Utilisateur de connexion initial (doit avoir sudo ou être root)
+ansible_user=root
+
+# Adresse du Satellite ou de la Capsule REX depuis laquelle lire la pubkey
+# (utilisé par delegate_to si le playbook ne tourne pas directement sur le Satellite)
+# satellite_host=satellite.example.com
+
+# Surcharge optionnelle du chemin de la clé publique
+# satellite_pubkey_path=/usr/share/foreman-proxy/.ssh/id_rsa_foreman_proxy.pub

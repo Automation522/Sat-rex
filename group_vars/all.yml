@@ -1,0 +1,29 @@
+# ==============================================================================
+# group_vars/all.yml — Variables globales pour setup_ansible_rex.yml
+# Surcharger selon l'environnement (Satellite principal vs Capsule)
+# ==============================================================================
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Identité de l'utilisateur REX
+# ──────────────────────────────────────────────────────────────────────────────
+rex_user: ansible-rex
+rex_home: /home/ansible-rex
+rex_shell: /bin/bash
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Clé publique SSH du foreman-proxy
+#
+# Option 1 (recommandée) : lecture automatique depuis le Satellite/Capsule
+#   → commenter rex_pubkey et renseigner satellite_host + satellite_pubkey_path
+#
+# Option 2 : clé fournie directement (utile en pipeline CI/CD ou vault)
+#   → décommenter rex_pubkey et coller la clé publique
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Option 1 — lecture distante
+satellite_host: localhost          # "localhost" si le playbook tourne SUR le Satellite
+                                   # sinon : satellite.example.com ou capsule.example.com
+satellite_pubkey_path: /usr/share/foreman-proxy/.ssh/id_rsa_foreman_proxy.pub
+
+# Option 2 — clé en clair (privilégier Ansible Vault pour protéger ce fichier)
+# rex_pubkey: "ssh-rsa AAAAB3Nza... foreman-proxy@satellite.example.com"
