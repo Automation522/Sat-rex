@@ -145,11 +145,13 @@
       no_log: true
 
     - name: "SSH | Déployer la clé autorisée dans authorized_keys"
-      ansible.posix.authorized_key:
-        user: "{{ rex_user }}"
-        key: "{{ rex_pubkey }}"
-        state: present
-        exclusive: false
+      ansible.builtin.lineinfile:
+        path: "{{ rex_home }}/.ssh/authorized_keys"
+        line: "{{ rex_pubkey }}"
+        create: true
+        owner: "{{ rex_user }}"
+        group: "{{ rex_user }}"
+        mode: "0600"
       no_log: true
       when: >-
         not _authkeys_existing.stat.exists
