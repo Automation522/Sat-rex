@@ -27,3 +27,11 @@ satellite_pubkey_path: /usr/share/foreman-proxy/.ssh/id_rsa_foreman_proxy.pub
 
 # Option 2 — clé en clair (privilégier Ansible Vault pour protéger ce fichier)
 # rex_pubkey: "ssh-rsa AAAAB3Nza... foreman-proxy@satellite.example.com"
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Certificat CA Satellite (utilisé par update_satellite_ca.yml)
+# ──────────────────────────────────────────────────────────────────────────────
+satellite_fqdn: "satellite.example.com"
+ca_cert_local_path: /etc/rhsm/ca/katello-server-ca.pem
+ca_cert_remote_url: "https://{{ satellite_fqdn }}/pub/katello-server-ca.crt"
+katello_consumer_rpm_url: "https://{{ satellite_fqdn }}/pub/katello-ca-consumer-latest.noarch.rpm"

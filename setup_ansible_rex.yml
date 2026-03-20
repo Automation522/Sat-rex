@@ -53,6 +53,13 @@
     # BLOC 1 — Création de l'utilisateur système (verrouillé dès la création)
     # =========================================================================
 
+    - name: "USER | Vérifier si l'utilisateur {{ rex_user }} existe déjà"
+      ansible.builtin.getent:
+        database: passwd
+        key: "{{ rex_user }}"
+        fail_key: false
+      register: _rex_user_check
+
     - name: "USER | Créer l'utilisateur système ansible-rex (verrouillé, sans mot de passe)"
       ansible.builtin.user:
         name: "{{ rex_user }}"
@@ -64,6 +71,7 @@
         password: "!"            # mot de passe invalide → aucun login par mot de passe
         password_lock: true      # verrouille le compte dès la création
         state: present
+      when: ansible_facts.getent_passwd[rex_user] is none
 
     # =========================================================================
     # BLOC 3 — Configuration sudo sécurisée
@@ -124,6 +132,18 @@
           Vérifiez rex_pubkey ou satellite_pubkey_path.
         success_msg: "Format de la clé publique validé."
 
+    - name: "SSH | Vérifier si authorized_keys existe déjà"
+      ansible.builtin.stat:
+        path: "{{ rex_home }}/.ssh/authorized_keys"
+      register: _authkeys_existing
+
+    - name: "SSH | Lire le contenu actuel d'authorized_keys"
+      ansible.builtin.slurp:
+        src: "{{ rex_home }}/.ssh/authorized_keys"
+      register: _authkeys_current
+      when: _authkeys_existing.stat.exists
+      no_log: true
+
     - name: "SSH | Déployer la clé autorisée dans authorized_keys"
       ansible.posix.authorized_key:
         user: "{{ rex_user }}"
@@ -131,6 +151,9 @@
         state: present
         exclusive: false
       no_log: true
+      when: >-
+        not _authkeys_existing.stat.exists
+        or rex_pubkey not in (_authkeys_current['content'] | b64decode)
 
     - name: "SSH | S'assurer des permissions correctes sur authorized_keys"
       ansible.builtin.file:

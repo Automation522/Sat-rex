@@ -1,0 +1,215 @@
+---
+# =============================================================================
+# Playbook  : update_satellite_ca.yml
+# Auteur    : Géré via Satellite / Ansible
+# Objet     : Vérifier et mettre à jour le certificat CA du Satellite/Capsule
+#             sur les hôtes enregistrés. Gère les deux modes d'enregistrement :
+#               - Cas 1 : Global Registration (Satellite 6.11+)
+#               - Cas 2 : katello-ca-consumer RPM (workflow legacy)
+# Compat.   : RHEL 7 / 8 / 9 / 10 · AlmaLinux 8 / 9 · Rocky Linux 8 / 9
+#
+# Usage     :
+#   ansible-playbook -i inventory/hosts update_satellite_ca.yml
+#
+# Variables clés (à surcharger si besoin via -e ou group_vars) :
+#   satellite_fqdn      : FQDN du Satellite ou de la Capsule
+#   ca_cert_local_path  : chemin local du CA sur les hôtes (/etc/rhsm/ca/katello-server-ca.pem)
+#   ca_cert_remote_url  : URL de téléchargement du CA sur le Satellite
+# =============================================================================
+
+- name: "Satellite CA — Vérification et mise à jour du certificat CA"
+  hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+    satellite_fqdn: "satellite.example.com"
+    ca_cert_local_path: /etc/rhsm/ca/katello-server-ca.pem
+    ca_cert_remote_url: "https://{{ satellite_fqdn }}/pub/katello-server-ca.crt"
+    katello_consumer_rpm_url: "https://{{ satellite_fqdn }}/pub/katello-ca-consumer-latest.noarch.rpm"
+
+  # ---------------------------------------------------------------------------
+  pre_tasks:
+
+    - name: "PRE | Vérification OS — famille RedHat version >= 7"
+      ansible.builtin.assert:
+        that:
+          - ansible_os_family == "RedHat"
+          - ansible_distribution_major_version | int >= 7
+          - ansible_distribution_major_version | int <= 10
+        fail_msg: >-
+          OS non supporté : {{ ansible_distribution }}
+          {{ ansible_distribution_major_version }}.
+          Ce playbook cible RHEL/AlmaLinux/Rocky 7, 8, 9 ou 10 uniquement.
+        success_msg: >-
+          OS compatible : {{ ansible_distribution }}
+          {{ ansible_distribution_major_version }}
+
+  # ---------------------------------------------------------------------------
+  tasks:
+
+    # =========================================================================
+    # BLOC 1 — Détection du mode d'enregistrement
+    # =========================================================================
+
+    - name: "DETECT | Vérifier si le RPM katello-ca-consumer est installé"
+      ansible.builtin.shell:
+        cmd: rpm -q katello-ca-consumer 2>/dev/null
+      register: _katello_rpm_check
+      changed_when: false
+      failed_when: false
+
+    - name: "DETECT | Déterminer le mode d'enregistrement"
+      ansible.builtin.set_fact:
+        registration_mode: "{{ 'legacy' if _katello_rpm_check.rc == 0 else 'global' }}"
+
+    - name: "DETECT | Afficher le mode détecté"
+      ansible.builtin.debug:
+        msg: "Mode d'enregistrement détecté : {{ registration_mode }} ({{ 'katello-ca-consumer RPM' if registration_mode == 'legacy' else 'Global Registration' }})"
+
+    # =========================================================================
+    # BLOC 2 — Récupération du certificat CA de référence depuis le Satellite
+    # =========================================================================
+
+    - name: "CA-REF | Télécharger le CA de référence depuis le Satellite"
+      ansible.builtin.uri:
+        url: "{{ ca_cert_remote_url }}"
+        return_content: true
+        validate_certs: false       # -k : le CA local peut être obsolète
+        timeout: 30
+      register: _ca_reference
+      delegate_to: localhost
+      run_once: true
+
+    - name: "CA-REF | Valider le format du certificat de référence"
+      ansible.builtin.assert:
+        that:
+          - "'BEGIN CERTIFICATE' in _ca_reference.content"
+        fail_msg: >-
+          Le contenu récupéré depuis {{ ca_cert_remote_url }} ne semble pas
+          être un certificat PEM valide.
+        success_msg: "Certificat CA de référence récupéré et valide."
+      run_once: true
+
+    # =========================================================================
+    # BLOC 3 — Vérification du certificat local
+    # =========================================================================
+
+    - name: "CA-LOCAL | Vérifier si le fichier CA local existe"
+      ansible.builtin.stat:
+        path: "{{ ca_cert_local_path }}"
+      register: _ca_local_stat
+
+    - name: "CA-LOCAL | Lire le certificat CA local"
+      ansible.builtin.slurp:
+        src: "{{ ca_cert_local_path }}"
+      register: _ca_local_content
+      when: _ca_local_stat.stat.exists
+
+    - name: "CA-LOCAL | Comparer le certificat local avec la référence"
+      ansible.builtin.set_fact:
+        ca_needs_update: >-
+          {{
+            not _ca_local_stat.stat.exists
+            or (_ca_local_content['content'] | b64decode | trim) != (_ca_reference.content | trim)
+          }}
+
+    - name: "CA-LOCAL | Résultat de la comparaison"
+      ansible.builtin.debug:
+        msg: >-
+          {{ 'Le certificat CA doit être mis à jour.'
+             if ca_needs_update | bool
+             else 'Le certificat CA est déjà à jour — aucune action nécessaire.' }}
+
+    # =========================================================================
+    # BLOC 4 — Cas 1 : Global Registration — remplacement direct du fichier PEM
+    # =========================================================================
+
+    - name: "GLOBAL | Sauvegarder l'ancien certificat CA"
+      ansible.builtin.copy:
+        src: "{{ ca_cert_local_path }}"
+        dest: "{{ ca_cert_local_path }}.bak.{{ ansible_date_time.iso8601_basic_short }}"
+        remote_src: true
+        owner: root
+        group: root
+        mode: "0644"
+      when:
+        - ca_needs_update | bool
+        - registration_mode == "global"
+        - _ca_local_stat.stat.exists
+
+    - name: "GLOBAL | Déployer le nouveau certificat CA"
+      ansible.builtin.copy:
+        content: "{{ _ca_reference.content }}"
+        dest: "{{ ca_cert_local_path }}"
+        owner: root
+        group: root
+        mode: "0644"
+      when:
+        - ca_needs_update | bool
+        - registration_mode == "global"
+
+    # =========================================================================
+    # BLOC 5 — Cas 2 : Legacy — réinstallation du RPM katello-ca-consumer
+    # =========================================================================
+
+    - name: "LEGACY | Désinstaller l'ancien RPM katello-ca-consumer"
+      ansible.builtin.shell:
+        cmd: rpm -e $(rpm -qa | grep katello-ca-consumer)
+      when:
+        - ca_needs_update | bool
+        - registration_mode == "legacy"
+      changed_when: true
+
+    - name: "LEGACY | Installer le RPM katello-ca-consumer depuis le Satellite"
+      ansible.builtin.yum:
+        name: "{{ katello_consumer_rpm_url }}"
+        state: present
+        disable_gpg_check: true     # le RPM n'est pas signé par défaut
+        validate_certs: false       # le CA local vient d'être supprimé
+      when:
+        - ca_needs_update | bool
+        - registration_mode == "legacy"
+
+    # =========================================================================
+    # BLOC 6 — Vérifications finales
+    # =========================================================================
+
+    - name: "CHECK | Relire le certificat CA après mise à jour"
+      ansible.builtin.slurp:
+        src: "{{ ca_cert_local_path }}"
+      register: _ca_final_content
+      when: ca_needs_update | bool
+
+    - name: "CHECK | Valider que le nouveau certificat correspond à la référence"
+      ansible.builtin.assert:
+        that:
+          - (_ca_final_content['content'] | b64decode | trim) == (_ca_reference.content | trim)
+        fail_msg: >-
+          ERREUR : le certificat CA déployé ne correspond pas à la référence
+          du Satellite. Intervention manuelle nécessaire.
+        success_msg: "Le certificat CA a été mis à jour avec succès."
+      when: ca_needs_update | bool
+
+    - name: "CHECK | Vérifier la connectivité RHSM vers le Satellite"
+      ansible.builtin.command:
+        cmd: subscription-manager identity
+      register: _rhsm_identity
+      changed_when: false
+      failed_when: false
+
+    - name: "RAPPORT | Afficher le résumé"
+      ansible.builtin.debug:
+        msg:
+          - "════════════════════════════════════════════════════════"
+          - "  Rapport de vérification CA Satellite"
+          - "  Hôte     : {{ inventory_hostname }}"
+          - "  OS       : {{ ansible_distribution }} {{ ansible_distribution_major_version }}"
+          - "  Mode     : {{ registration_mode | upper }}"
+          - "  Satellite: {{ satellite_fqdn }}"
+          - "════════════════════════════════════════════════════════"
+          - "► Mise à jour effectuée : {{ 'OUI' if ca_needs_update | bool else 'NON (déjà à jour)' }}"
+          - "► RHSM identity :"
+          - "    {{ _rhsm_identity.stdout | default('Non disponible') }}"
+          - "    {{ 'ERREUR: ' + _rhsm_identity.stderr if _rhsm_identity.rc != 0 else '' }}"
+          - "════════════════════════════════════════════════════════"
