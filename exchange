@@ -1,0 +1,38 @@
+e problème est probablement que les workers Pulp sont encore accrochés sur l'ancienne tâche malgré le cancel. Voici le diagnostic direct en base :
+
+Diagnostic PostgreSQL immédiat
+bash
+# Sur la Capsule (ld3inf001p → ssh vers vm-linf001j363)
+su - postgres -c "psql -d pulpcore -x -c \
+  \"SELECT pulp_id, state, name, started_at, finished_at, error \
+    FROM core_task \
+    WHERE state IN ('running','waiting','canceling') \
+    ORDER BY started_at DESC LIMIT 10;\""
+Si les workers sont toujours bloqués sur l'ancienne tâche
+bash
+# Forcer le kill des workers et relancer proprement
+systemctl stop pulpcore-worker@1 pulpcore-worker@2
+systemctl stop pulpcore-api pulpcore-content
+
+# Tuer tous les process pulp résiduels
+pkill -9 -f pulpcore-worker
+sleep 5
+
+# Redémarrer dans l'ordre
+systemctl start pulpcore-api
+systemctl start pulpcore-content
+systemctl start pulpcore-worker@1
+systemctl start pulpcore-worker@2
+
+# Vérifier qu'ils écoutent
+systemctl status pulpcore-worker@1 pulpcore-worker@2 | grep "Active"
+Marquer la tâche bloquée comme "failed" en base
+bash
+su - postgres -c "psql -d pulpcore -c \
+  \"UPDATE core_task SET state='failed' \
+    WHERE pulp_id='c9ff5e15-965f-4ccb-a2f1-e357946c56f7' \
+    AND state IN ('running','waiting','canceling');\""
+Puis relancer la sync
+bash
+# Sur le Satellite
+hammer capsule content synchronize --id 3
