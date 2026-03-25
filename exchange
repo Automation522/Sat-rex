@@ -1,50 +1,50 @@
-Voici l'analyse des deux screenshots  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/1b72f7bb-51ba-4cf1-84a9-5e56ff0e2775/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE7ZXDV5BM&Signature=9i0Lfwb3yjq8Wcd9mlq7R61dKKo%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIELVpl9q0WphHZSFxTT8BwXV%2FS8epq9WGBtjeFlYvX8%2FAiEAm607XxWW%2BoZ0%2BI7nVtO%2BIgRbGp0WeRlVjG7tuHH9ddQq%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDAZZrMlUTzwJtygBWirQBFwIZ6koXS9yRWcMpXOzdjz2O1R9%2BSDlgBRT8YPBk1Z0a9tsjUCXZdYBHG0eFkbxB9Mje2Cl2W38b%2BuctEDNWRHdOEsWiRoJQi7Hoy%2FojDMWXt%2FB%2FCb20ZkVkRk%2FIIP0GpXJ%2FVTsiI%2F9Wb%2BGwelua48%2F9IuzxQxqPzqQE%2FSmeLTrBNu6%2BRyxwf4MVRre4zcj4z%2FTYAb58%2B8nRMo%2BilR3nzZqXLbywAnCG5tfR1bPoDfmGh9aydzs5aqt145nWiSwAJLwurO0TzVwfqQano5PGSrkLI44Ndno8%2Bm4lPVP1OZf9hU9SA6Q7k1D8nKGfPujonmWQoXsx5g6AGXowCZ0juANfTTnFfgy1jSVOYH09xOPMbXgILz0oyenBG9v2W35K31HWQCOErmXwZZuopYdL6fRVl1QM0cS1WPOgLcKrmbC%2BoTnaHoWWxSi8GYUc%2BMK5CnI5df6bIEzaSFYUfYAdST3zye0CAYWwNq6wZjxOu159r4LkYbmzq%2B3ozAbXtrtnxFYCFOUuRJiQxWXcy03OBWsgKcJ2e2xUipkucM2drLCFqRIisJicapCpJKO0XpxMyrb%2B2huJ7vUWHyJOe4l7Juz0EkO81UftHfT2ENAhlfn5m3a2fp40PgOPOqmpsGEIs9aUusOkRZz2tZO3LHznBJzNM3LWXCLz7VOJ0avQ4s%2Buhtxbc4Cb5Nl4KdA0gaPIE0IXm%2Bj1%2BD%2BH17UmgnsVecwwrjddcsFHtrYD6Hfh39JeXw8c7DhTfwAuQ%2FPTp3ssj8mByAauyVWUwwHWaAl1jAwmq%2BOzgY6mAH3SVB6%2Bps5%2B%2FdEA2fDNbLXwVkfRcfbmiBBZQCdZATvREEJfnnJ%2Bi7Ntrd7ldoWhMEbV13%2F4%2BQQH1KP7h%2B3jSxUmXsaCefVuj5mh4dUt3YUlxltWMoABR5NIVsLGu807UR14T1LtdN37F%2BgXn59YdF9q8%2Fn%2B0UvSeFOxIOewuivfd1ue%2BHvz69hbfTvMG2m7gzzbGSMHGVS2g%3D%3D&Expires=1774427140)
+C'est le diagnostic clé ! [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/cd2cdf0b-e271-4e22-9b53-abcb17f23763/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE3FB6MXLY&Signature=afi7fLpKKzwvRQywQI6p7o69wPs%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCID2U2nJYobOXu9u%2FXHkUjw0gYCTfKLc%2B2tUxEvk4uCF%2FAiEAgI7QmFwO4UdcrFgqGq83Oj1g%2BD95j4IgKKZhcN8dU00q%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDADlOW4e7cpFqdGO4yrQBK8IhTXI4YmqevTpnm99OwtqDFzWWC3M33rwWSvV8skYvpzVdcfuB7uW66erkUzhNsqVAipTSQgBu8MY6zvejfblDH27rwkWxdw2WTfy6SAlr2PSHGYzCDn8x3PBFBC6pGjY1xWMKsS46BqT3xyN6KufNLta9yfPuaKq7B8uC0OSjHB6FJQoI7qRbuVOH23E2gcLHO97AhjCRgbkUtnauUmVNQiGyTneZoODf8reivAeh7qcgATw5ch9UdiquzbHR7eHmsHq3Bn%2FaNghyl%2B9gvxdeKbXHoyJ1YaW%2F27FpGGfTK%2BiJmPiLO8MbZRe2LpxXmR5u09UmIod3Cz1KFjJZqjU4NVsfuL8wVAfQ3sBzV%2BE%2BvlspJZRUjgbn1vBV4G75WQoe%2FlrgswmNiBqrxD07DsxvMo9TuvyUV1tFBVfV90F9kRBDDk38YHmiW4AdR9QFnCfEXGDt4L92xarCCZzXK4%2BuAMcwUwL3KRm83g4FYSTdYXst5hb7wKJuBaxCAXgz65dla2ji%2FffOIExH5bQ%2FSYd0k2s6yW9FVg6EJ3drCluwsvlsQoVwshtfqN%2FwoS4litlqRgBWi7kyv8Mt9b9NEEjFhuTe4NJlBSXKIkzhaBf4DsDmH0aAX4%2F406GwjYRN9UdEd9ZOQJbkONnzxKslIpmTJivExIjvaU9iiwW%2BmGTeAh0JT%2FsoGjzs5G1idMj%2FG%2Bny1fjak0iw6MzTKB%2F5l6uB1nB7%2BwEzeuK8a0W2KL6m5NJSS0w%2FFJdJ9FiN2G9JzGmzDF0MUNYXfVen4qWFyUw%2FbCOzgY6mAElncEXpBX1KZAHAOCi3HaFIMNSCWPwdwI%2Fxcs8IB12R3D8qSAQIozD82eWArF8DFkr61f%2FSSm7b4fmA%2FKa%2BMgclPDX7Ujrn9dL1PNUrV9TddCJkfusrphSzhB8Dhpc6XzzfNeYE%2BAnuwiwIzKG%2FCWpvDO5wSGG9%2BApO87e2a9JyX5BML7JsmqiBFMcmAagFgS82mAizOTh1g%3D%3D&Expires=1774427427)
 
-## Ce qu'ils montrent
+## Ce que révèlent les logs
 
-**Sur la Capsule**  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/1b72f7bb-51ba-4cf1-84a9-5e56ff0e2775/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE7ZXDV5BM&Signature=9i0Lfwb3yjq8Wcd9mlq7R61dKKo%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIELVpl9q0WphHZSFxTT8BwXV%2FS8epq9WGBtjeFlYvX8%2FAiEAm607XxWW%2BoZ0%2BI7nVtO%2BIgRbGp0WeRlVjG7tuHH9ddQq%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDAZZrMlUTzwJtygBWirQBFwIZ6koXS9yRWcMpXOzdjz2O1R9%2BSDlgBRT8YPBk1Z0a9tsjUCXZdYBHG0eFkbxB9Mje2Cl2W38b%2BuctEDNWRHdOEsWiRoJQi7Hoy%2FojDMWXt%2FB%2FCb20ZkVkRk%2FIIP0GpXJ%2FVTsiI%2F9Wb%2BGwelua48%2F9IuzxQxqPzqQE%2FSmeLTrBNu6%2BRyxwf4MVRre4zcj4z%2FTYAb58%2B8nRMo%2BilR3nzZqXLbywAnCG5tfR1bPoDfmGh9aydzs5aqt145nWiSwAJLwurO0TzVwfqQano5PGSrkLI44Ndno8%2Bm4lPVP1OZf9hU9SA6Q7k1D8nKGfPujonmWQoXsx5g6AGXowCZ0juANfTTnFfgy1jSVOYH09xOPMbXgILz0oyenBG9v2W35K31HWQCOErmXwZZuopYdL6fRVl1QM0cS1WPOgLcKrmbC%2BoTnaHoWWxSi8GYUc%2BMK5CnI5df6bIEzaSFYUfYAdST3zye0CAYWwNq6wZjxOu159r4LkYbmzq%2B3ozAbXtrtnxFYCFOUuRJiQxWXcy03OBWsgKcJ2e2xUipkucM2drLCFqRIisJicapCpJKO0XpxMyrb%2B2huJ7vUWHyJOe4l7Juz0EkO81UftHfT2ENAhlfn5m3a2fp40PgOPOqmpsGEIs9aUusOkRZz2tZO3LHznBJzNM3LWXCLz7VOJ0avQ4s%2Buhtxbc4Cb5Nl4KdA0gaPIE0IXm%2Bj1%2BD%2BH17UmgnsVecwwrjddcsFHtrYD6Hfh39JeXw8c7DhTfwAuQ%2FPTp3ssj8mByAauyVWUwwHWaAl1jAwmq%2BOzgY6mAH3SVB6%2Bps5%2B%2FdEA2fDNbLXwVkfRcfbmiBBZQCdZATvREEJfnnJ%2Bi7Ntrd7ldoWhMEbV13%2F4%2BQQH1KP7h%2B3jSxUmXsaCefVuj5mh4dUt3YUlxltWMoABR5NIVsLGu807UR14T1LtdN37F%2BgXn59YdF9q8%2Fn%2B0UvSeFOxIOewuivfd1ue%2BHvz69hbfTvMG2m7gzzbGSMHGVS2g%3D%3D&Expires=1774427140)
-- `UPDATE 0` → La base Pulpcore n'avait **aucune tâche bloquée** — elles étaient déjà propres
-- Workers redémarrés avec succès (PIDs 1523/1524 visibles)
+**`proxy.log` vide** → Le Satellite n'envoie **aucune requête** à la Capsule [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/cd2cdf0b-e271-4e22-9b53-abcb17f23763/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE3FB6MXLY&Signature=afi7fLpKKzwvRQywQI6p7o69wPs%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCID2U2nJYobOXu9u%2FXHkUjw0gYCTfKLc%2B2tUxEvk4uCF%2FAiEAgI7QmFwO4UdcrFgqGq83Oj1g%2BD95j4IgKKZhcN8dU00q%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDADlOW4e7cpFqdGO4yrQBK8IhTXI4YmqevTpnm99OwtqDFzWWC3M33rwWSvV8skYvpzVdcfuB7uW66erkUzhNsqVAipTSQgBu8MY6zvejfblDH27rwkWxdw2WTfy6SAlr2PSHGYzCDn8x3PBFBC6pGjY1xWMKsS46BqT3xyN6KufNLta9yfPuaKq7B8uC0OSjHB6FJQoI7qRbuVOH23E2gcLHO97AhjCRgbkUtnauUmVNQiGyTneZoODf8reivAeh7qcgATw5ch9UdiquzbHR7eHmsHq3Bn%2FaNghyl%2B9gvxdeKbXHoyJ1YaW%2F27FpGGfTK%2BiJmPiLO8MbZRe2LpxXmR5u09UmIod3Cz1KFjJZqjU4NVsfuL8wVAfQ3sBzV%2BE%2BvlspJZRUjgbn1vBV4G75WQoe%2FlrgswmNiBqrxD07DsxvMo9TuvyUV1tFBVfV90F9kRBDDk38YHmiW4AdR9QFnCfEXGDt4L92xarCCZzXK4%2BuAMcwUwL3KRm83g4FYSTdYXst5hb7wKJuBaxCAXgz65dla2ji%2FffOIExH5bQ%2FSYd0k2s6yW9FVg6EJ3drCluwsvlsQoVwshtfqN%2FwoS4litlqRgBWi7kyv8Mt9b9NEEjFhuTe4NJlBSXKIkzhaBf4DsDmH0aAX4%2F406GwjYRN9UdEd9ZOQJbkONnzxKslIpmTJivExIjvaU9iiwW%2BmGTeAh0JT%2FsoGjzs5G1idMj%2FG%2Bny1fjak0iw6MzTKB%2F5l6uB1nB7%2BwEzeuK8a0W2KL6m5NJSS0w%2FFJdJ9FiN2G9JzGmzDF0MUNYXfVen4qWFyUw%2FbCOzgY6mAElncEXpBX1KZAHAOCi3HaFIMNSCWPwdwI%2Fxcs8IB12R3D8qSAQIozD82eWArF8DFkr61f%2FSSm7b4fmA%2FKa%2BMgclPDX7Ujrn9dL1PNUrV9TddCJkfusrphSzhB8Dhpc6XzzfNeYE%2BAnuwiwIzKG%2FCWpvDO5wSGG9%2BApO87e2a9JyX5BML7JsmqiBFMcmAagFgS82mAizOTh1g%3D%3D&Expires=1774427427)
 
-**Sur le Satellite**  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/b7837854-76fb-430d-b44a-f31b30e74457/image-2.jpg?AWSAccessKeyId=ASIA2F3EMEYE7ZXDV5BM&Signature=QBrc8DuIRagb4uzyM9LSNvXZcAs%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIELVpl9q0WphHZSFxTT8BwXV%2FS8epq9WGBtjeFlYvX8%2FAiEAm607XxWW%2BoZ0%2BI7nVtO%2BIgRbGp0WeRlVjG7tuHH9ddQq%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDAZZrMlUTzwJtygBWirQBFwIZ6koXS9yRWcMpXOzdjz2O1R9%2BSDlgBRT8YPBk1Z0a9tsjUCXZdYBHG0eFkbxB9Mje2Cl2W38b%2BuctEDNWRHdOEsWiRoJQi7Hoy%2FojDMWXt%2FB%2FCb20ZkVkRk%2FIIP0GpXJ%2FVTsiI%2F9Wb%2BGwelua48%2F9IuzxQxqPzqQE%2FSmeLTrBNu6%2BRyxwf4MVRre4zcj4z%2FTYAb58%2B8nRMo%2BilR3nzZqXLbywAnCG5tfR1bPoDfmGh9aydzs5aqt145nWiSwAJLwurO0TzVwfqQano5PGSrkLI44Ndno8%2Bm4lPVP1OZf9hU9SA6Q7k1D8nKGfPujonmWQoXsx5g6AGXowCZ0juANfTTnFfgy1jSVOYH09xOPMbXgILz0oyenBG9v2W35K31HWQCOErmXwZZuopYdL6fRVl1QM0cS1WPOgLcKrmbC%2BoTnaHoWWxSi8GYUc%2BMK5CnI5df6bIEzaSFYUfYAdST3zye0CAYWwNq6wZjxOu159r4LkYbmzq%2B3ozAbXtrtnxFYCFOUuRJiQxWXcy03OBWsgKcJ2e2xUipkucM2drLCFqRIisJicapCpJKO0XpxMyrb%2B2huJ7vUWHyJOe4l7Juz0EkO81UftHfT2ENAhlfn5m3a2fp40PgOPOqmpsGEIs9aUusOkRZz2tZO3LHznBJzNM3LWXCLz7VOJ0avQ4s%2Buhtxbc4Cb5Nl4KdA0gaPIE0IXm%2Bj1%2BD%2BH17UmgnsVecwwrjddcsFHtrYD6Hfh39JeXw8c7DhTfwAuQ%2FPTp3ssj8mByAauyVWUwwHWaAl1jAwmq%2BOzgY6mAH3SVB6%2Bps5%2B%2FdEA2fDNbLXwVkfRcfbmiBBZQCdZATvREEJfnnJ%2Bi7Ntrd7ldoWhMEbV13%2F4%2BQQH1KP7h%2B3jSxUmXsaCefVuj5mh4dUt3YUlxltWMoABR5NIVsLGu807UR14T1LtdN37F%2BgXn59YdF9q8%2Fn%2B0UvSeFOxIOewuivfd1ue%2BHvz69hbfTvMG2m7gzzbGSMHGVS2g%3D%3D&Expires=1774427140)
-- **2 tâches** trouvées en running : `ab857d62...` et `37929512...` — c'est anormal, une seule devrait exister
-- `foreman_tasks:cleanup` → **"No tasks matching filter found"** — le Force Unlock de l'UI a déjà nettoyé Dynflow
-- Nouvelle sync relancée mais **toujours 0%**
+**Dernières tâches Pulpcore** → Toutes `completed` et datent d'**hier 14h43-14h47** — rien de nouveau depuis [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/cd2cdf0b-e271-4e22-9b53-abcb17f23763/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE3FB6MXLY&Signature=afi7fLpKKzwvRQywQI6p7o69wPs%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCID2U2nJYobOXu9u%2FXHkUjw0gYCTfKLc%2B2tUxEvk4uCF%2FAiEAgI7QmFwO4UdcrFgqGq83Oj1g%2BD95j4IgKKZhcN8dU00q%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDADlOW4e7cpFqdGO4yrQBK8IhTXI4YmqevTpnm99OwtqDFzWWC3M33rwWSvV8skYvpzVdcfuB7uW66erkUzhNsqVAipTSQgBu8MY6zvejfblDH27rwkWxdw2WTfy6SAlr2PSHGYzCDn8x3PBFBC6pGjY1xWMKsS46BqT3xyN6KufNLta9yfPuaKq7B8uC0OSjHB6FJQoI7qRbuVOH23E2gcLHO97AhjCRgbkUtnauUmVNQiGyTneZoODf8reivAeh7qcgATw5ch9UdiquzbHR7eHmsHq3Bn%2FaNghyl%2B9gvxdeKbXHoyJ1YaW%2F27FpGGfTK%2BiJmPiLO8MbZRe2LpxXmR5u09UmIod3Cz1KFjJZqjU4NVsfuL8wVAfQ3sBzV%2BE%2BvlspJZRUjgbn1vBV4G75WQoe%2FlrgswmNiBqrxD07DsxvMo9TuvyUV1tFBVfV90F9kRBDDk38YHmiW4AdR9QFnCfEXGDt4L92xarCCZzXK4%2BuAMcwUwL3KRm83g4FYSTdYXst5hb7wKJuBaxCAXgz65dla2ji%2FffOIExH5bQ%2FSYd0k2s6yW9FVg6EJ3drCluwsvlsQoVwshtfqN%2FwoS4litlqRgBWi7kyv8Mt9b9NEEjFhuTe4NJlBSXKIkzhaBf4DsDmH0aAX4%2F406GwjYRN9UdEd9ZOQJbkONnzxKslIpmTJivExIjvaU9iiwW%2BmGTeAh0JT%2FsoGjzs5G1idMj%2FG%2Bny1fjak0iw6MzTKB%2F5l6uB1nB7%2BwEzeuK8a0W2KL6m5NJSS0w%2FFJdJ9FiN2G9JzGmzDF0MUNYXfVen4qWFyUw%2FbCOzgY6mAElncEXpBX1KZAHAOCi3HaFIMNSCWPwdwI%2Fxcs8IB12R3D8qSAQIozD82eWArF8DFkr61f%2FSSm7b4fmA%2FKa%2BMgclPDX7Ujrn9dL1PNUrV9TddCJkfusrphSzhB8Dhpc6XzzfNeYE%2BAnuwiwIzKG%2FCWpvDO5wSGG9%2BApO87e2a9JyX5BML7JsmqiBFMcmAagFgS82mAizOTh1g%3D%3D&Expires=1774427427)
 
-## Le vrai problème — Double tâche + Pulp ne reçoit rien
+**Conclusion** : La tâche Dynflow est en état "running" sur le Satellite mais **n'exécute aucune action réelle** — c'est un zombie Dynflow côté Satellite, pas un problème Capsule.
 
-La sync Dynflow démarre mais **Pulpcore ne crée aucune tâche côté Capsule**. Vérifier :
+## Fix — Restart Dynflow sur le Satellite
 
 ```bash
-# Sur la Capsule — est-ce que Pulp reçoit la requête de sync ?
-tail -f /var/log/foreman-proxy/proxy.log | grep -i "sync\|pulp\|error"
-
-# Y a-t-il de nouvelles tâches Pulp créées depuis la sync ?
-su - postgres -c "psql -d pulpcore -tAc \
-  \"SELECT pulp_id, state, name, started_at \
-    FROM core_task \
-    ORDER BY started_at DESC LIMIT 5;\""
-```
-
-## Annuler la tâche doublon sur le Satellite
-
-```bash
-# Annuler la 2ème tâche (garder une seule)
+# Sur le Satellite (ld3inf001p)
+# 1. Annuler les 2 tâches fantômes
+hammer task cancel --id ab857d62-76ab-4a8a-bbf3-62f445a885a8
 hammer task cancel --id 37929512-ae75-4f3e-901d-bc13fc2aa345
 
-# Vérifier l'état de la tâche principale
-hammer task info --id ab857d62-76ab-4a8a-bbf3-62f445a885a8
+# 2. Redémarrer Dynflow executor
+systemctl restart dynflow-sidekiq@orchestrator
+systemctl restart dynflow-sidekiq@worker-1
+systemctl restart dynflow-sidekiq@worker-2
+
+# Ou plus simplement via satellite-maintain
+satellite-maintain service restart --only dynflow-sidekiq
 ```
 
-## Vérifier la connexion Satellite → Capsule
+## Vérifier que Dynflow est sain
 
 ```bash
-# Sur le Satellite — le proxy répond ?
-hammer capsule refresh-features --id 3
+# Lister les workers Dynflow actifs
+foreman-rake dynflow:executor:status
 
-# Test direct de l'API Pulp de la Capsule
-curl -sk -u admin https://vm-linf001j363.mairie.toulouse.intra:9090/pulp/api/v3/tasks/?state=running \
-  | python3 -m json.tool | head -30
+# Nettoyer les plans d'exécution orphelins
+foreman-rake foreman_tasks:cleanup TASK_SEARCH="state=running" \
+  VERBOSE=true DELETE=true
 ```
 
-> 🎯 Le problème est probablement que la Capsule reçoit la demande de sync mais que le foreman-proxy ne la transmet pas correctement à Pulpcore — vérifier `proxy.log` est la priorité.
+## Relancer après restart Dynflow
+
+```bash
+sleep 30
+hammer capsule content synchronize --id 3
+
+# Vérifier immédiatement que proxy.log reçoit quelque chose
+tail -f /var/log/foreman-proxy/proxy.log
+# Sur la Capsule cette fois
+```
+
+> 🎯 **Résumé** : Le problème n'est pas dans Pulp ni dans la Capsule — tout est sain côté Capsule. C'est Dynflow sur le Satellite qui ne dispatche pas les actions. Un restart des workers Dynflow devrait débloquer la situation.
