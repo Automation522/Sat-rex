@@ -1,43 +1,50 @@
-La tâche Dynflow tourne depuis **17 heures** et est bloquée à 0%  — c'est une tâche fantôme côté Satellite. Le bouton **Force Unlock** est visible et c'est exactement ce qu'il faut utiliser. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/9a383ce8-9a92-4aef-ac48-724192bf9504/image.jpg?AWSAccessKeyId=ASIA2F3EMEYEXXXYFSED&Signature=65Q6lxUmAkvUs5THrY4j%2BTFWNYQ%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCICts2c73z0eQEiAPeWJfMoTI2ReWkmptY3q5xb3cAcjRAiEAhFA6GIA7D42QZ2%2BwIG0O2m%2FeTGXszy3jPOm5iBDTM3sq%2FAQIqP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDEpYH%2B%2FPIov%2B5ATHjSrQBGLrbx0qMnBX0iW8yIksnRt8qLBuhMeIDzHF2RgoN7bPtgnzVj%2BN04hhoCLaFYFeaOdwx9BZU0mPC1fmMAZtvZ4deKDtJvT%2FO0%2FYwue4a%2FBjZHmcS9HQsZDfk6WOmzb3vopDnIo8c%2FD9pyCEypd6n3FSZ3FcmK%2BxwKaxu3o5uLJg4wQeLsW7DM1yICYrA2faQZUn8vmJEVYqEALBB0%2FYJflTxYgx6xPGDkcjRhzornMdrycfRI229zGqfQ92d0zRHK08cvL6pU3A%2B1f53gq7IKlKXc4N3jITYQjSIsvSP7rXgLishJDBPDlyIkA389%2FGJhlQkMRjMQGsGqrXs8oo8uwqOlhZ1nah61o80hCvmG6OFbue7Od1ss3VEUk6LTo%2FbtbZ7arGuXD65099dWd2Im1t%2BkXcQDhl9wantjAJy27pxmO28stz94OkvdYaZTFzcQEzJVCXyv8fvzQ5TdHCcd8wLcqHgDXmgyxRWaUbciVz9VqkcDUsekDQKyztUPFMK0VqENbDgdrsBZC7V6RvoNcM5mEk6Dy7yBt2J8lmhunA0D1Jt%2F5CS8wajf2BsdipcFRCRLQiS6aWyz0cpcKj5Ol9ISt7paKvQbf%2FawUpOCSPQRww6onwdlUZc7nliKRI4hyBY5MNNBVTWlIiKZ2CqZX1pFYQrGqAFWnB3luwhdRPh9LAiceL%2F%2F82YfSkWigtfye%2FdSmNWCRzcD4yi%2FGFHDEG9Eog37Lsk%2Fv7eUm%2FF5XG9ofmODTzvrcFa%2FfnjBjVBqyIPRwS4iLFJ%2FgbdO0KE%2FQw3ZeOzgY6mAGXzMaA87QdkqXBdHx39zRhY0VGAFZnQwto5SQfWoEMFWapNGrvMBgDAvWUxY%2BUiCePNtHt5LRkd3AOl9ct1U9YWZ%2FeqHzbYrNmzjhQ3FQshb5QqK2IIccqivJVSNSAPjlicxcfkF4GsewRQTJ0U1ffa7%2FH9FVxwtPtvO8S%2BnJJlq7V18qS48cz7%2BDcSKrKz2aRae8oRT7hYA%3D%3D&Expires=1774425796)
+Voici l'analyse des deux screenshots  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/1b72f7bb-51ba-4cf1-84a9-5e56ff0e2775/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE7ZXDV5BM&Signature=9i0Lfwb3yjq8Wcd9mlq7R61dKKo%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIELVpl9q0WphHZSFxTT8BwXV%2FS8epq9WGBtjeFlYvX8%2FAiEAm607XxWW%2BoZ0%2BI7nVtO%2BIgRbGp0WeRlVjG7tuHH9ddQq%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDAZZrMlUTzwJtygBWirQBFwIZ6koXS9yRWcMpXOzdjz2O1R9%2BSDlgBRT8YPBk1Z0a9tsjUCXZdYBHG0eFkbxB9Mje2Cl2W38b%2BuctEDNWRHdOEsWiRoJQi7Hoy%2FojDMWXt%2FB%2FCb20ZkVkRk%2FIIP0GpXJ%2FVTsiI%2F9Wb%2BGwelua48%2F9IuzxQxqPzqQE%2FSmeLTrBNu6%2BRyxwf4MVRre4zcj4z%2FTYAb58%2B8nRMo%2BilR3nzZqXLbywAnCG5tfR1bPoDfmGh9aydzs5aqt145nWiSwAJLwurO0TzVwfqQano5PGSrkLI44Ndno8%2Bm4lPVP1OZf9hU9SA6Q7k1D8nKGfPujonmWQoXsx5g6AGXowCZ0juANfTTnFfgy1jSVOYH09xOPMbXgILz0oyenBG9v2W35K31HWQCOErmXwZZuopYdL6fRVl1QM0cS1WPOgLcKrmbC%2BoTnaHoWWxSi8GYUc%2BMK5CnI5df6bIEzaSFYUfYAdST3zye0CAYWwNq6wZjxOu159r4LkYbmzq%2B3ozAbXtrtnxFYCFOUuRJiQxWXcy03OBWsgKcJ2e2xUipkucM2drLCFqRIisJicapCpJKO0XpxMyrb%2B2huJ7vUWHyJOe4l7Juz0EkO81UftHfT2ENAhlfn5m3a2fp40PgOPOqmpsGEIs9aUusOkRZz2tZO3LHznBJzNM3LWXCLz7VOJ0avQ4s%2Buhtxbc4Cb5Nl4KdA0gaPIE0IXm%2Bj1%2BD%2BH17UmgnsVecwwrjddcsFHtrYD6Hfh39JeXw8c7DhTfwAuQ%2FPTp3ssj8mByAauyVWUwwHWaAl1jAwmq%2BOzgY6mAH3SVB6%2Bps5%2B%2FdEA2fDNbLXwVkfRcfbmiBBZQCdZATvREEJfnnJ%2Bi7Ntrd7ldoWhMEbV13%2F4%2BQQH1KP7h%2B3jSxUmXsaCefVuj5mh4dUt3YUlxltWMoABR5NIVsLGu807UR14T1LtdN37F%2BgXn59YdF9q8%2Fn%2B0UvSeFOxIOewuivfd1ue%2BHvz69hbfTvMG2m7gzzbGSMHGVS2g%3D%3D&Expires=1774427140)
 
-## Solution immédiate — Force Unlock
+## Ce qu'ils montrent
 
-**Directement dans l'interface**  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/9a383ce8-9a92-4aef-ac48-724192bf9504/image.jpg?AWSAccessKeyId=ASIA2F3EMEYEXXXYFSED&Signature=65Q6lxUmAkvUs5THrY4j%2BTFWNYQ%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCICts2c73z0eQEiAPeWJfMoTI2ReWkmptY3q5xb3cAcjRAiEAhFA6GIA7D42QZ2%2BwIG0O2m%2FeTGXszy3jPOm5iBDTM3sq%2FAQIqP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDEpYH%2B%2FPIov%2B5ATHjSrQBGLrbx0qMnBX0iW8yIksnRt8qLBuhMeIDzHF2RgoN7bPtgnzVj%2BN04hhoCLaFYFeaOdwx9BZU0mPC1fmMAZtvZ4deKDtJvT%2FO0%2FYwue4a%2FBjZHmcS9HQsZDfk6WOmzb3vopDnIo8c%2FD9pyCEypd6n3FSZ3FcmK%2BxwKaxu3o5uLJg4wQeLsW7DM1yICYrA2faQZUn8vmJEVYqEALBB0%2FYJflTxYgx6xPGDkcjRhzornMdrycfRI229zGqfQ92d0zRHK08cvL6pU3A%2B1f53gq7IKlKXc4N3jITYQjSIsvSP7rXgLishJDBPDlyIkA389%2FGJhlQkMRjMQGsGqrXs8oo8uwqOlhZ1nah61o80hCvmG6OFbue7Od1ss3VEUk6LTo%2FbtbZ7arGuXD65099dWd2Im1t%2BkXcQDhl9wantjAJy27pxmO28stz94OkvdYaZTFzcQEzJVCXyv8fvzQ5TdHCcd8wLcqHgDXmgyxRWaUbciVz9VqkcDUsekDQKyztUPFMK0VqENbDgdrsBZC7V6RvoNcM5mEk6Dy7yBt2J8lmhunA0D1Jt%2F5CS8wajf2BsdipcFRCRLQiS6aWyz0cpcKj5Ol9ISt7paKvQbf%2FawUpOCSPQRww6onwdlUZc7nliKRI4hyBY5MNNBVTWlIiKZ2CqZX1pFYQrGqAFWnB3luwhdRPh9LAiceL%2F%2F82YfSkWigtfye%2FdSmNWCRzcD4yi%2FGFHDEG9Eog37Lsk%2Fv7eUm%2FF5XG9ofmODTzvrcFa%2FfnjBjVBqyIPRwS4iLFJ%2FgbdO0KE%2FQw3ZeOzgY6mAGXzMaA87QdkqXBdHx39zRhY0VGAFZnQwto5SQfWoEMFWapNGrvMBgDAvWUxY%2BUiCePNtHt5LRkd3AOl9ct1U9YWZ%2FeqHzbYrNmzjhQ3FQshb5QqK2IIccqivJVSNSAPjlicxcfkF4GsewRQTJ0U1ffa7%2FH9FVxwtPtvO8S%2BnJJlq7V18qS48cz7%2BDcSKrKz2aRae8oRT7hYA%3D%3D&Expires=1774425796)
-1. Cliquer sur **Force Unlock** (bouton rouge visible)
-2. Confirmer
-3. Puis cliquer **Cancel** pour annuler définitivement la tâche
+**Sur la Capsule**  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/1b72f7bb-51ba-4cf1-84a9-5e56ff0e2775/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE7ZXDV5BM&Signature=9i0Lfwb3yjq8Wcd9mlq7R61dKKo%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIELVpl9q0WphHZSFxTT8BwXV%2FS8epq9WGBtjeFlYvX8%2FAiEAm607XxWW%2BoZ0%2BI7nVtO%2BIgRbGp0WeRlVjG7tuHH9ddQq%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDAZZrMlUTzwJtygBWirQBFwIZ6koXS9yRWcMpXOzdjz2O1R9%2BSDlgBRT8YPBk1Z0a9tsjUCXZdYBHG0eFkbxB9Mje2Cl2W38b%2BuctEDNWRHdOEsWiRoJQi7Hoy%2FojDMWXt%2FB%2FCb20ZkVkRk%2FIIP0GpXJ%2FVTsiI%2F9Wb%2BGwelua48%2F9IuzxQxqPzqQE%2FSmeLTrBNu6%2BRyxwf4MVRre4zcj4z%2FTYAb58%2B8nRMo%2BilR3nzZqXLbywAnCG5tfR1bPoDfmGh9aydzs5aqt145nWiSwAJLwurO0TzVwfqQano5PGSrkLI44Ndno8%2Bm4lPVP1OZf9hU9SA6Q7k1D8nKGfPujonmWQoXsx5g6AGXowCZ0juANfTTnFfgy1jSVOYH09xOPMbXgILz0oyenBG9v2W35K31HWQCOErmXwZZuopYdL6fRVl1QM0cS1WPOgLcKrmbC%2BoTnaHoWWxSi8GYUc%2BMK5CnI5df6bIEzaSFYUfYAdST3zye0CAYWwNq6wZjxOu159r4LkYbmzq%2B3ozAbXtrtnxFYCFOUuRJiQxWXcy03OBWsgKcJ2e2xUipkucM2drLCFqRIisJicapCpJKO0XpxMyrb%2B2huJ7vUWHyJOe4l7Juz0EkO81UftHfT2ENAhlfn5m3a2fp40PgOPOqmpsGEIs9aUusOkRZz2tZO3LHznBJzNM3LWXCLz7VOJ0avQ4s%2Buhtxbc4Cb5Nl4KdA0gaPIE0IXm%2Bj1%2BD%2BH17UmgnsVecwwrjddcsFHtrYD6Hfh39JeXw8c7DhTfwAuQ%2FPTp3ssj8mByAauyVWUwwHWaAl1jAwmq%2BOzgY6mAH3SVB6%2Bps5%2B%2FdEA2fDNbLXwVkfRcfbmiBBZQCdZATvREEJfnnJ%2Bi7Ntrd7ldoWhMEbV13%2F4%2BQQH1KP7h%2B3jSxUmXsaCefVuj5mh4dUt3YUlxltWMoABR5NIVsLGu807UR14T1LtdN37F%2BgXn59YdF9q8%2Fn%2B0UvSeFOxIOewuivfd1ue%2BHvz69hbfTvMG2m7gzzbGSMHGVS2g%3D%3D&Expires=1774427140)
+- `UPDATE 0` → La base Pulpcore n'avait **aucune tâche bloquée** — elles étaient déjà propres
+- Workers redémarrés avec succès (PIDs 1523/1524 visibles)
 
-## Ou via CLI sur le Satellite
+**Sur le Satellite**  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/b7837854-76fb-430d-b44a-f31b30e74457/image-2.jpg?AWSAccessKeyId=ASIA2F3EMEYE7ZXDV5BM&Signature=QBrc8DuIRagb4uzyM9LSNvXZcAs%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIELVpl9q0WphHZSFxTT8BwXV%2FS8epq9WGBtjeFlYvX8%2FAiEAm607XxWW%2BoZ0%2BI7nVtO%2BIgRbGp0WeRlVjG7tuHH9ddQq%2FAQIqf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDAZZrMlUTzwJtygBWirQBFwIZ6koXS9yRWcMpXOzdjz2O1R9%2BSDlgBRT8YPBk1Z0a9tsjUCXZdYBHG0eFkbxB9Mje2Cl2W38b%2BuctEDNWRHdOEsWiRoJQi7Hoy%2FojDMWXt%2FB%2FCb20ZkVkRk%2FIIP0GpXJ%2FVTsiI%2F9Wb%2BGwelua48%2F9IuzxQxqPzqQE%2FSmeLTrBNu6%2BRyxwf4MVRre4zcj4z%2FTYAb58%2B8nRMo%2BilR3nzZqXLbywAnCG5tfR1bPoDfmGh9aydzs5aqt145nWiSwAJLwurO0TzVwfqQano5PGSrkLI44Ndno8%2Bm4lPVP1OZf9hU9SA6Q7k1D8nKGfPujonmWQoXsx5g6AGXowCZ0juANfTTnFfgy1jSVOYH09xOPMbXgILz0oyenBG9v2W35K31HWQCOErmXwZZuopYdL6fRVl1QM0cS1WPOgLcKrmbC%2BoTnaHoWWxSi8GYUc%2BMK5CnI5df6bIEzaSFYUfYAdST3zye0CAYWwNq6wZjxOu159r4LkYbmzq%2B3ozAbXtrtnxFYCFOUuRJiQxWXcy03OBWsgKcJ2e2xUipkucM2drLCFqRIisJicapCpJKO0XpxMyrb%2B2huJ7vUWHyJOe4l7Juz0EkO81UftHfT2ENAhlfn5m3a2fp40PgOPOqmpsGEIs9aUusOkRZz2tZO3LHznBJzNM3LWXCLz7VOJ0avQ4s%2Buhtxbc4Cb5Nl4KdA0gaPIE0IXm%2Bj1%2BD%2BH17UmgnsVecwwrjddcsFHtrYD6Hfh39JeXw8c7DhTfwAuQ%2FPTp3ssj8mByAauyVWUwwHWaAl1jAwmq%2BOzgY6mAH3SVB6%2Bps5%2B%2FdEA2fDNbLXwVkfRcfbmiBBZQCdZATvREEJfnnJ%2Bi7Ntrd7ldoWhMEbV13%2F4%2BQQH1KP7h%2B3jSxUmXsaCefVuj5mh4dUt3YUlxltWMoABR5NIVsLGu807UR14T1LtdN37F%2BgXn59YdF9q8%2Fn%2B0UvSeFOxIOewuivfd1ue%2BHvz69hbfTvMG2m7gzzbGSMHGVS2g%3D%3D&Expires=1774427140)
+- **2 tâches** trouvées en running : `ab857d62...` et `37929512...` — c'est anormal, une seule devrait exister
+- `foreman_tasks:cleanup` → **"No tasks matching filter found"** — le Force Unlock de l'UI a déjà nettoyé Dynflow
+- Nouvelle sync relancée mais **toujours 0%**
 
-```bash
-# Récupérer l'ID de la tâche bloquée
-hammer task list --search "state=running and action~Synchronize Capsule" --fields id,name
+## Le vrai problème — Double tâche + Pulp ne reçoit rien
 
-# Force unlock + cancel
-foreman-rake foreman_tasks:cleanup TASK_SEARCH="state=running and action~Synchronize Capsule" \
-  VERBOSE=true
-
-# Alternative directe - tuer toutes les tâches capsule bloquées
-foreman-rake foreman_tasks:cancel_stalled_tasks
-```
-
-## Après le Force Unlock — vérifier la Capsule
+La sync Dynflow démarre mais **Pulpcore ne crée aucune tâche côté Capsule**. Vérifier :
 
 ```bash
-# S'assurer que les workers Pulp sont propres
+# Sur la Capsule — est-ce que Pulp reçoit la requête de sync ?
+tail -f /var/log/foreman-proxy/proxy.log | grep -i "sync\|pulp\|error"
+
+# Y a-t-il de nouvelles tâches Pulp créées depuis la sync ?
 su - postgres -c "psql -d pulpcore -tAc \
-  \"UPDATE core_task SET state='canceled', finished_at=NOW() \
-    WHERE state NOT IN ('completed','failed','canceled');\""
-
-systemctl restart pulpcore-worker@1 pulpcore-worker@2
+  \"SELECT pulp_id, state, name, started_at \
+    FROM core_task \
+    ORDER BY started_at DESC LIMIT 5;\""
 ```
 
-## Relancer proprement
+## Annuler la tâche doublon sur le Satellite
 
 ```bash
-# Attendre 30 secondes puis relancer
-sleep 30
-hammer capsule content synchronize --id 3
+# Annuler la 2ème tâche (garder une seule)
+hammer task cancel --id 37929512-ae75-4f3e-901d-bc13fc2aa345
+
+# Vérifier l'état de la tâche principale
+hammer task info --id ab857d62-76ab-4a8a-bbf3-62f445a885a8
 ```
 
-> ⚠️ **Force Unlock** libère le verrou Dynflow sans tuer la tâche Pulp sous-jacente — c'est pour ça qu'il faut aussi nettoyer la base Pulp sur la Capsule en parallèle, sinon la nouvelle sync sera bloquée par la même tâche zombie.
+## Vérifier la connexion Satellite → Capsule
+
+```bash
+# Sur le Satellite — le proxy répond ?
+hammer capsule refresh-features --id 3
+
+# Test direct de l'API Pulp de la Capsule
+curl -sk -u admin https://vm-linf001j363.mairie.toulouse.intra:9090/pulp/api/v3/tasks/?state=running \
+  | python3 -m json.tool | head -30
+```
+
+> 🎯 Le problème est probablement que la Capsule reçoit la demande de sync mais que le foreman-proxy ne la transmet pas correctement à Pulpcore — vérifier `proxy.log` est la priorité.
