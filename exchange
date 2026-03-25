@@ -1,38 +1,43 @@
-e problème est probablement que les workers Pulp sont encore accrochés sur l'ancienne tâche malgré le cancel. Voici le diagnostic direct en base :
+La tâche Dynflow tourne depuis **17 heures** et est bloquée à 0%  — c'est une tâche fantôme côté Satellite. Le bouton **Force Unlock** est visible et c'est exactement ce qu'il faut utiliser. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/9a383ce8-9a92-4aef-ac48-724192bf9504/image.jpg?AWSAccessKeyId=ASIA2F3EMEYEXXXYFSED&Signature=65Q6lxUmAkvUs5THrY4j%2BTFWNYQ%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCICts2c73z0eQEiAPeWJfMoTI2ReWkmptY3q5xb3cAcjRAiEAhFA6GIA7D42QZ2%2BwIG0O2m%2FeTGXszy3jPOm5iBDTM3sq%2FAQIqP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDEpYH%2B%2FPIov%2B5ATHjSrQBGLrbx0qMnBX0iW8yIksnRt8qLBuhMeIDzHF2RgoN7bPtgnzVj%2BN04hhoCLaFYFeaOdwx9BZU0mPC1fmMAZtvZ4deKDtJvT%2FO0%2FYwue4a%2FBjZHmcS9HQsZDfk6WOmzb3vopDnIo8c%2FD9pyCEypd6n3FSZ3FcmK%2BxwKaxu3o5uLJg4wQeLsW7DM1yICYrA2faQZUn8vmJEVYqEALBB0%2FYJflTxYgx6xPGDkcjRhzornMdrycfRI229zGqfQ92d0zRHK08cvL6pU3A%2B1f53gq7IKlKXc4N3jITYQjSIsvSP7rXgLishJDBPDlyIkA389%2FGJhlQkMRjMQGsGqrXs8oo8uwqOlhZ1nah61o80hCvmG6OFbue7Od1ss3VEUk6LTo%2FbtbZ7arGuXD65099dWd2Im1t%2BkXcQDhl9wantjAJy27pxmO28stz94OkvdYaZTFzcQEzJVCXyv8fvzQ5TdHCcd8wLcqHgDXmgyxRWaUbciVz9VqkcDUsekDQKyztUPFMK0VqENbDgdrsBZC7V6RvoNcM5mEk6Dy7yBt2J8lmhunA0D1Jt%2F5CS8wajf2BsdipcFRCRLQiS6aWyz0cpcKj5Ol9ISt7paKvQbf%2FawUpOCSPQRww6onwdlUZc7nliKRI4hyBY5MNNBVTWlIiKZ2CqZX1pFYQrGqAFWnB3luwhdRPh9LAiceL%2F%2F82YfSkWigtfye%2FdSmNWCRzcD4yi%2FGFHDEG9Eog37Lsk%2Fv7eUm%2FF5XG9ofmODTzvrcFa%2FfnjBjVBqyIPRwS4iLFJ%2FgbdO0KE%2FQw3ZeOzgY6mAGXzMaA87QdkqXBdHx39zRhY0VGAFZnQwto5SQfWoEMFWapNGrvMBgDAvWUxY%2BUiCePNtHt5LRkd3AOl9ct1U9YWZ%2FeqHzbYrNmzjhQ3FQshb5QqK2IIccqivJVSNSAPjlicxcfkF4GsewRQTJ0U1ffa7%2FH9FVxwtPtvO8S%2BnJJlq7V18qS48cz7%2BDcSKrKz2aRae8oRT7hYA%3D%3D&Expires=1774425796)
 
-Diagnostic PostgreSQL immédiat
-bash
-# Sur la Capsule (ld3inf001p → ssh vers vm-linf001j363)
-su - postgres -c "psql -d pulpcore -x -c \
-  \"SELECT pulp_id, state, name, started_at, finished_at, error \
-    FROM core_task \
-    WHERE state IN ('running','waiting','canceling') \
-    ORDER BY started_at DESC LIMIT 10;\""
-Si les workers sont toujours bloqués sur l'ancienne tâche
-bash
-# Forcer le kill des workers et relancer proprement
-systemctl stop pulpcore-worker@1 pulpcore-worker@2
-systemctl stop pulpcore-api pulpcore-content
+## Solution immédiate — Force Unlock
 
-# Tuer tous les process pulp résiduels
-pkill -9 -f pulpcore-worker
-sleep 5
+**Directement dans l'interface**  : [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/40318091/9a383ce8-9a92-4aef-ac48-724192bf9504/image.jpg?AWSAccessKeyId=ASIA2F3EMEYEXXXYFSED&Signature=65Q6lxUmAkvUs5THrY4j%2BTFWNYQ%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEOD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCICts2c73z0eQEiAPeWJfMoTI2ReWkmptY3q5xb3cAcjRAiEAhFA6GIA7D42QZ2%2BwIG0O2m%2FeTGXszy3jPOm5iBDTM3sq%2FAQIqP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDEpYH%2B%2FPIov%2B5ATHjSrQBGLrbx0qMnBX0iW8yIksnRt8qLBuhMeIDzHF2RgoN7bPtgnzVj%2BN04hhoCLaFYFeaOdwx9BZU0mPC1fmMAZtvZ4deKDtJvT%2FO0%2FYwue4a%2FBjZHmcS9HQsZDfk6WOmzb3vopDnIo8c%2FD9pyCEypd6n3FSZ3FcmK%2BxwKaxu3o5uLJg4wQeLsW7DM1yICYrA2faQZUn8vmJEVYqEALBB0%2FYJflTxYgx6xPGDkcjRhzornMdrycfRI229zGqfQ92d0zRHK08cvL6pU3A%2B1f53gq7IKlKXc4N3jITYQjSIsvSP7rXgLishJDBPDlyIkA389%2FGJhlQkMRjMQGsGqrXs8oo8uwqOlhZ1nah61o80hCvmG6OFbue7Od1ss3VEUk6LTo%2FbtbZ7arGuXD65099dWd2Im1t%2BkXcQDhl9wantjAJy27pxmO28stz94OkvdYaZTFzcQEzJVCXyv8fvzQ5TdHCcd8wLcqHgDXmgyxRWaUbciVz9VqkcDUsekDQKyztUPFMK0VqENbDgdrsBZC7V6RvoNcM5mEk6Dy7yBt2J8lmhunA0D1Jt%2F5CS8wajf2BsdipcFRCRLQiS6aWyz0cpcKj5Ol9ISt7paKvQbf%2FawUpOCSPQRww6onwdlUZc7nliKRI4hyBY5MNNBVTWlIiKZ2CqZX1pFYQrGqAFWnB3luwhdRPh9LAiceL%2F%2F82YfSkWigtfye%2FdSmNWCRzcD4yi%2FGFHDEG9Eog37Lsk%2Fv7eUm%2FF5XG9ofmODTzvrcFa%2FfnjBjVBqyIPRwS4iLFJ%2FgbdO0KE%2FQw3ZeOzgY6mAGXzMaA87QdkqXBdHx39zRhY0VGAFZnQwto5SQfWoEMFWapNGrvMBgDAvWUxY%2BUiCePNtHt5LRkd3AOl9ct1U9YWZ%2FeqHzbYrNmzjhQ3FQshb5QqK2IIccqivJVSNSAPjlicxcfkF4GsewRQTJ0U1ffa7%2FH9FVxwtPtvO8S%2BnJJlq7V18qS48cz7%2BDcSKrKz2aRae8oRT7hYA%3D%3D&Expires=1774425796)
+1. Cliquer sur **Force Unlock** (bouton rouge visible)
+2. Confirmer
+3. Puis cliquer **Cancel** pour annuler définitivement la tâche
 
-# Redémarrer dans l'ordre
-systemctl start pulpcore-api
-systemctl start pulpcore-content
-systemctl start pulpcore-worker@1
-systemctl start pulpcore-worker@2
+## Ou via CLI sur le Satellite
 
-# Vérifier qu'ils écoutent
-systemctl status pulpcore-worker@1 pulpcore-worker@2 | grep "Active"
-Marquer la tâche bloquée comme "failed" en base
-bash
-su - postgres -c "psql -d pulpcore -c \
-  \"UPDATE core_task SET state='failed' \
-    WHERE pulp_id='c9ff5e15-965f-4ccb-a2f1-e357946c56f7' \
-    AND state IN ('running','waiting','canceling');\""
-Puis relancer la sync
-bash
-# Sur le Satellite
+```bash
+# Récupérer l'ID de la tâche bloquée
+hammer task list --search "state=running and action~Synchronize Capsule" --fields id,name
+
+# Force unlock + cancel
+foreman-rake foreman_tasks:cleanup TASK_SEARCH="state=running and action~Synchronize Capsule" \
+  VERBOSE=true
+
+# Alternative directe - tuer toutes les tâches capsule bloquées
+foreman-rake foreman_tasks:cancel_stalled_tasks
+```
+
+## Après le Force Unlock — vérifier la Capsule
+
+```bash
+# S'assurer que les workers Pulp sont propres
+su - postgres -c "psql -d pulpcore -tAc \
+  \"UPDATE core_task SET state='canceled', finished_at=NOW() \
+    WHERE state NOT IN ('completed','failed','canceled');\""
+
+systemctl restart pulpcore-worker@1 pulpcore-worker@2
+```
+
+## Relancer proprement
+
+```bash
+# Attendre 30 secondes puis relancer
+sleep 30
 hammer capsule content synchronize --id 3
+```
+
+> ⚠️ **Force Unlock** libère le verrou Dynflow sans tuer la tâche Pulp sous-jacente — c'est pour ça qu'il faut aussi nettoyer la base Pulp sur la Capsule en parallèle, sinon la nouvelle sync sera bloquée par la même tâche zombie.
